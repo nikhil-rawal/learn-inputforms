@@ -22,7 +22,7 @@ const RenderSearchSuggestions = ({ suggestions, fnc }) => {
                 key={`${index}-${suggestion}`}
                 role="option"
                 aria-selected="false"
-                onMouseOver={() => fnc(suggestion)}
+                onClick={() => fnc(suggestion)}
               >
                 🔍 {suggestion}
               </li>
@@ -83,7 +83,7 @@ function App() {
     }
   };
 
-  const handleSuggestionMouseOver = (value) => {
+  const handleSuggestionClick = (value) => {
     setInputValue(value);
     console.log("Current Suggestion", value);
   };
@@ -117,6 +117,7 @@ function App() {
             onClick={() => {
               setInputValue("");
               setSearchSuggestions([]);
+              setSearchQuery("");
             }}
           >
             X
@@ -128,25 +129,8 @@ function App() {
       </form>
       <RenderSearchSuggestions
         suggestions={searchSuggestions}
-        fnc={handleSuggestionMouseOver}
+        fnc={handleSuggestionClick}
       />
-      {/* 
-                // onClick={console.log("and", suggestion)}
-                // onClick={()=>handleSuggestionClick(suggestion)}
-                // onMouseOver={() => handleMouseOver(suggestion)}
-                // ${
-                //   index === selectedSuggestionIndex
-                //     ? "bg-gray-200 dark:bg-neutral-700"
-                //     : ""
-                // }
-              >
-                🔍
-                {suggestion}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )} */}
     </div>
   );
 }
