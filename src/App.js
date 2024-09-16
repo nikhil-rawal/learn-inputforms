@@ -85,6 +85,7 @@ function App() {
 
   const handleSuggestionClick = (value) => {
     setInputValue(value);
+    setSearchSuggestions([]);
     console.log("Current Suggestion", value);
   };
 
